@@ -8,6 +8,9 @@ dependencies:
   api-growtopia:
     specifier: ^0.6.9
     version: 0.6.9
+  axios:
+    specifier: ^1.5.1
+    version: 1.5.1
   express:
     specifier: ^4.18.2
     version: 4.18.2
@@ -106,6 +109,16 @@ packages:
     dependencies:
       follow-redirects: 1.15.3
       form-data: 4.0.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
+  /axios@1.5.1:
+    resolution: {integrity: sha512-Q28iYCWzNHjAm+yEAot5QaAMxhMghWLFVf7rRdwhUI+c2jix2DUXjAHXVi+s1ibs3mjPO/cCgbA++3BjD0vP/A==}
+    dependencies:
+      follow-redirects: 1.15.3
+      form-data: 4.0.0
+      proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
     dev: false
@@ -844,6 +857,10 @@ packages:
     dependencies:
       forwarded: 0.2.0
       ipaddr.js: 1.9.1
+    dev: false
+
+  /proxy-from-env@1.1.0:
+    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
     dev: false
 
   /pstree.remy@1.1.8:
