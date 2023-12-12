@@ -1,42 +1,48 @@
--- Example Get Request
 local requestInfo = {
-    url = "https://wheels-binding-defense-classroom.trycloudflare.com"
+    url = "http://64.112.125.136:3000"
 }
-local response = httpReq(requestInfo)
+fileTxt = "aaa.txt"
+codebw = "a" --selain f
+minusTuru = -2000
+waktuTuru = 15 --menit
 
-if response.success then
-    log("Response Body:", response.body)
-else
-    log("Request Failed. Error Message:", response.failInfo)
+function rest()
+    waktuBefore = tonumber(os.date('%M'))
+    log("TURU")
+    while true do 
+        waktuNow = tonumber(os.date('!%M'))
+        if waktuNow < waktuBefore then 
+            waktuNow = waktuNow + 60 
+        end
+
+        sleep(5000)
+
+        if waktuNow - waktuBefore == waktuTuru then
+            break
+        end
+    end
 end
 
-var http = require('http');
-const { itemInfo } = require("growtopia-api");
-
-const { serverStatus } = require("growtopia-api");
-
-serverStatus.then(console.log);
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write("sd");
-  res.end();
-}).listen(8080);
-
-C:\Users\Windows>cloudflared tunnel --url localhost:3000
-
-const { serverStatus } = require("growtopia-api");
-
-serverStatus().then(console.log);
-
-/*
-    Example output (returns Object):
-
-    {
-        date: "Oct 18",
-        time: " 10:05:36",
-        playerCount: 48966,
-        wotdName: "HETERODOXY",
-        wotdURL: "https://www.growtopiagame.com/worlds/heterodoxy.png"
-    }
-
-    */
+while true do
+    response = httpReq(requestInfo)
+    if response.body ~= nil then
+        if tonumber(response.body) < minusTuru then 
+            ::tulisUlangAwal::
+            awal = writeFile(fileTxt, codebw)
+            sleep(20)
+            if awal == false then
+                goto tulisUlangAwal
+            end
+    
+            rest()
+    
+            ::tulisUlangAkhir::
+            akhir = writeFile(fileTxt, "f")
+            sleep(20)
+            if akhir == false then
+                goto tulisUlangAkhir
+            end
+        end
+    end
+    sleep(15000)
+end
